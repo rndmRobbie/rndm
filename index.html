@@ -150,7 +150,7 @@
     if (cmd.startsWith('cat ')) {
       const file = cmd.split(' ')[1];
       if (currentDir === '~' && file === 'about.txt') {
-        return 'This is the RNDM digital domain. Welcome!';
+        return 'Buy milk.';
       }
       if (currentDir === '~' && file === 'secret.cat') {
         return asciiEggs.cat;
@@ -282,7 +282,7 @@
           // Help/About/Clear
           else if (val.toLowerCase() === 'help') {
             handled = true;
-            const response = 'Available commands: help, about, links, podcast, clear, projects, music, contact, skills, blog, stats, time, weather, chiptune, matrix, unmatrix, exit';
+            const response = 'Available commands: help, ls, cd, about, links, podcast, clear, projects, music, contact, skills, time, weather, chiptune, matrix, exit';
             typeWriterEffect(output, response + '\n', 12, () => { cmdInput.disabled = false; cmdInput.value = ''; });
             return;
           }
