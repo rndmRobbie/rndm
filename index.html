@@ -261,7 +261,7 @@
           else if (val.toLowerCase() === 'matrix') {
             handled = true;
             startMatrix();
-            typeWriterEffect(output, 'Matrix effect enabled! Type "unmatrix" to stop.\n', 12, () => { cmdInput.disabled = false; cmdInput.value = ''; });
+            typeWriterEffect(output, 'Matrix effect enabled! Follow the white rabbit...\n', 12, () => { cmdInput.disabled = false; cmdInput.value = ''; });
             return;
           }
           else if (val.toLowerCase() === 'unmatrix') {
@@ -282,7 +282,7 @@
           // Help/About/Clear
           else if (val.toLowerCase() === 'help') {
             handled = true;
-            const response = 'Available commands: help, ls, cd, about, links, podcast, clear, projects, music, contact, skills, time, weather, chiptune, matrix, exit';
+            const response = 'Available commands: help, ls, cd, about, links, podcast, clear, projects, contact, skills, time, weather, chiptune, matrix, exit --#!Press F5 if stuck';
             typeWriterEffect(output, response + '\n', 12, () => { cmdInput.disabled = false; cmdInput.value = ''; });
             return;
           }
