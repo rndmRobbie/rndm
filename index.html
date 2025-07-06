@@ -282,7 +282,7 @@
           // Help/About/Clear
           else if (val.toLowerCase() === 'help') {
             handled = true;
-            const response = 'Available commands: help, ls, cd, about, links, podcast, clear, projects, contact, skills, time, weather, chiptune, matrix, exit --#!Press F5 if stuck';
+            const response = 'Available commands: help, ls, cd, about, links, podcast, clear, projects, contact, skills, livestreams, time, weather, chiptune, matrix, exit --#!Press F5 if stuck';
             typeWriterEffect(output, response + '\n', 12, () => { cmdInput.disabled = false; cmdInput.value = ''; });
             return;
           }
