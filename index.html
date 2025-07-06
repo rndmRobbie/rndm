@@ -222,12 +222,11 @@
           // Podcast
           else if (val.toLowerCase() === 'podcast') {
             handled = true;
-            typeWriterEffect(
-              output,
-              'Design Imperative on YouTube: <a class="terminal-link" href="https://www.youtube.com/playlist?list=PL6dmNeBlCqByH3-fW-4GzM0sDyQmBuX9d" target="_blank">Open Playlist</a>\n',
-              12,
-              () => { cmdInput.disabled = false; cmdInput.value = ''; }
-            );
+            output.innerHTML +=
+              'Design Imperative on YouTube: <a class="terminal-link" href="https://www.youtube.com/playlist?list=PL6dmNeBlCqByH3-fW-4GzM0sDyQmBuX9d" target="_blank">Open Playlist</a><br>';
+            cmdInput.disabled = false;
+            cmdInput.value = '';
+            cmdInput.focus();
             return;
           }
           // Links
@@ -287,7 +286,7 @@
           // Help/About/Clear
           else if (val.toLowerCase() === 'help') {
             handled = true;
-            const response = 'Available commands: help, about, links, podcast, clear, projects, resume, contact, skills, blog, stats, time, weather, chiptune, matrix, unmatrix, exit';
+            const response = 'Available commands: help, about, links, podcast, clear, projects, music, contact, skills, blog, stats, time, weather, chiptune, matrix, unmatrix, exit';
             typeWriterEffect(output, response + '\n', 12, () => { cmdInput.disabled = false; cmdInput.value = ''; });
             return;
           }
@@ -297,7 +296,9 @@
               <div class="about-img-wrap">
                 <img src="static/me.jpg" alt="Robbie" class="about-img glitch-img" />
               </div>
-              <div>RNDM: Retro-futuristic digital domain by robbie.</div>
+              <div>⁰෴⁰ Architect | Unity VR world builder | Design Imperative podcast on YouTube | Streamer
+                <br>RNDM Architects
+                <br>EN/ESP/ITA</div>
             `;
             typeWriterEffect(output, aboutHTML + '\n', 0, () => {
               cmdInput.disabled = false;
@@ -474,7 +475,7 @@ window.addEventListener('keydown', function(e) {
   ) {
     stopMatrix();
   }
-  if (e.key === ' ') {
+  if e.key === ' ' {
     const now = Date.now();
     if (now - lastSpace < 400) {
       stopMatrix();
