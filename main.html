@@ -1,11 +1,415 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+  <meta charset="UTF-8">
+  <title>rndm linktree idea</title>
+  <link rel="stylesheet" href="assets/css/main-style.css" />
+
 </head>
 <body>
-    <h1>Hello, World!</h1>
+<svg class="data-lines" viewBox="0 0 800 600" preserveAspectRatio="none">
+  <path d="M100,100 C200,150 300,50 400,100 S600,150 700,100" stroke="white" fill="none" stroke-width="1" opacity="0.05">
+    <animate attributeName="stroke-dashoffset" values="600;0" dur="5s" repeatCount="indefinite" />
+    <animate attributeName="stroke-dasharray" values="4,6;1,12" dur="3s" repeatCount="indefinite" />
+  </path>
+  <path d="M0,500 Q200,400 400,500 T800,500" stroke="white" fill="none" stroke-width="1" opacity="0.05">
+    <animate attributeName="stroke-dashoffset" values="800;0" dur="6s" repeatCount="indefinite" />
+    <animate attributeName="stroke-dasharray" values="2,12;6,6" dur="2s" repeatCount="indefinite" />
+  </path>
+</svg>
+<div class="hero-logo">
+  <img src="https://rndmrobbie.github.io/assets/images/logo.png" alt="RNDM Logo" />
+</div>
+<div class="container">
+  <div class="list">
+    <div class="list-item">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/user.png" alt="About Me Icon" />
+      </div>
+      <div class="content">
+        <div class="title">About Me</div>
+        <div class="subtitle">robbie@rndm</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="list">
+    <div class="list-item link-card" data-url="https://youtube.com/@ArchiRobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/podcast.png" alt="Podcast Icon" />
+      </div>
+      <div class="content">
+        <div class="title">Design Imperative</div>
+        <div class="subtitle">YouTube Podcast</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="list">
+    <div class="list-item link-card" data-url="https://www.twitch.tv/archirobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/twitch.png" alt="Twitch Icon" />
+      </div>
+      <div class="content">
+        <div class="title">Twitch</div>
+        <div class="subtitle">Live Gameplay</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://kick.com/archirobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/kick.png" alt="Kick Icon" />
+      </div>
+      <div class="content">
+        <div class="title">Kick</div>
+        <div class="subtitle">Alt Streams</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://youtube.com/@ArchiRobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/youtube.png" alt="YouTube Icon" />
+      </div>
+      <div class="content">
+        <div class="title">YouTube</div>
+        <div class="subtitle">Podcast & VODs</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="show-hide-btn">
+    <span class="show">Show All</span>
+    <span class="hide">Hide</span>
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</div>
+
+
+<div class="container">
+  <div class="list">
+    <div class="list-item link-card" data-url="https://discord.gg/archirobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/discord.png" alt="Discord Icon" />
+      </div>
+      <div class="content">
+        <div class="title">Discord</div>
+        <div class="subtitle">Community Hub</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://www.instagram.com/archirobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/instagram.png" alt="Instagram Icon" />
+      </div>
+      <div class="content">
+        <div class="title">Instagram</div>
+        <div class="subtitle">Gaming Clips</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://www.tiktok.com/@archirobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/tiktok.png" alt="TikTok Icon" />
+      </div>
+      <div class="content">
+        <div class="title">TikTok</div>
+        <div class="subtitle">Short Form</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="show-hide-btn">
+    <span class="show">Show All</span>
+    <span class="hide">Hide</span>
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</div>
+
+
+
+<div class="container">
+  <div class="list">
+    <div class="list-item link-card" data-url="https://twitter.com/archirobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/twitter.png" alt="Twitter Icon" />
+      </div>
+      <div class="content">
+        <div class="title">Twitter</div>
+        <div class="subtitle">Stream Thoughts</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://www.threads.net/@archirobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/threads.png" alt="Threads Icon" />
+      </div>
+      <div class="content">
+        <div class="title">Threads</div>
+        <div class="subtitle">Quick Takes</div>
+      </div>
+    </div>
+
+    <div class="list-item">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/empty.png" alt="Placeholder Icon" />
+      </div>
+      <div class="content">
+        <div class="title">Coming Soon</div>
+        <div class="subtitle">More socials on the way</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="show-hide-btn">
+    <span class="show">Show All</span>
+    <span class="hide">Hide</span>
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</div>
+
+
+
+<div class="container">
+  <div class="list">
+    <div class="list-item link-card" data-url="https://vrchat.com/home/user/usr_archirobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/vrchat.png" alt="VRChat" />
+      </div>
+      <div class="content">
+        <div class="title">VRChat</div>
+        <div class="subtitle">Social VR Platform</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://account.xbox.com/en-us/profile?gamertag=ArchiRobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/xbox.png" alt="Xbox" />
+      </div>
+      <div class="content">
+        <div class="title">Xbox</div>
+        <div class="subtitle">Gamertag Profile</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://rec.net/user/ArchiRobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/recroom.png" alt="Rec Room" />
+      </div>
+      <div class="content">
+        <div class="title">RecRoom</div>
+        <div class="subtitle">VR Social Hangout</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="show-hide-btn">
+    <span class="show">Show All</span>
+    <span class="hide">Hide</span>
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</div>
+
+
+<div class="container">
+  <div class="list">
+    <div class="list-item link-card" data-url="https://retroachievements.org/user/ArchiRobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/retroachievements.png" alt="Retro Achievements" />
+      </div>
+      <div class="content">
+        <div class="title">Retro Achievements</div>
+        <div class="subtitle">Classic Game Badges</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://rankone.gg/user/archirobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/rankone.png" alt="RankOne" />
+      </div>
+      <div class="content">
+        <div class="title">Rank One</div>
+        <div class="subtitle">Competitive Stats</div>
+      </div>
+    </div>
+
+    <div class="list-item">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/empty.png" alt="Coming Soon" />
+      </div>
+      <div class="content">
+        <div class="title">Coming Soon</div>
+        <div class="subtitle">New Gaming Link</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="show-hide-btn">
+    <span class="show">Show All</span>
+    <span class="hide">Hide</span>
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</div>
+
+
+<div class="container">
+  <div class="list">
+    <div class="list-item link-card" data-url="https://ko-fi.com/archirobbie">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/kofi.png" alt="Ko-fi" />
+      </div>
+      <div class="content">
+        <div class="title">Ko-fi</div>
+        <div class="subtitle">Buy me a Ko-fi ☕</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://www.amazon.com/hz/wishlist/ls/1X9X9X9X9X9X9">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/amazon.png" alt="Amazon Wishlist" />
+      </div>
+      <div class="content">
+        <div class="title">Amazon Wishlist</div>
+        <div class="subtitle">Stuff I’d love 🧸</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://store.steampowered.com/wishlist/profiles/76561199000000000">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/steam.png" alt="Steam Wishlist" />
+      </div>
+      <div class="content">
+        <div class="title">Steam</div>
+        <div class="subtitle">Game Wishlist 🎮</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="show-hide-btn">
+    <span class="show">Show All</span>
+    <span class="hide">Hide</span>
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</div>
+
+
+<div class="container">
+  <div class="list">
+    <div class="list-item link-card" data-url="https://www.gog.com/u/archirobbie/wishlist">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/gog.png" alt="GOG Wishlist" />
+      </div>
+      <div class="content">
+        <div class="title">GOG</div>
+        <div class="subtitle">Retro/Indie Games</div>
+      </div>
+    </div>
+
+    <div class="list-item">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/empty.png" alt="TBD" />
+      </div>
+      <div class="content">
+        <div class="title">Coming Soon</div>
+        <div class="subtitle">Support Link TBD</div>
+      </div>
+    </div>
+
+    <div class="list-item">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/empty.png" alt="TBD" />
+      </div>
+      <div class="content">
+        <div class="title">Coming Soon</div>
+        <div class="subtitle">Support Link TBD</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="show-hide-btn">
+    <span class="show">Show All</span>
+    <span class="hide">Hide</span>
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</div>
+
+
+<div class="container">
+  <div class="list">
+    <div class="list-item link-card" data-url="https://codepen.io/rndmRobbie/pen/ogXKyqo">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/codepen.png" alt="Bootloader Icon" />
+      </div>
+      <div class="content">
+        <div class="title">Bootloader</div>
+        <div class="subtitle">Terminal UI on CodePen</div>
+      </div>
+    </div>
+
+    <div class="list-item link-card" data-url="https://rec.net/room/QuestHomes">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/recroom.png" alt="QuestHomes Icon" />
+      </div>
+      <div class="content">
+        <div class="title">QuestHomes</div>
+        <div class="subtitle">Rec Room Environment</div>
+      </div>
+    </div>
+
+    <div class="list-item">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/empty.png" alt="Coming Soon" />
+      </div>
+      <div class="content">
+        <div class="title">Coming Soon</div>
+        <div class="subtitle">New Project Placeholder</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="show-hide-btn">
+    <span class="show">Show All</span>
+    <span class="hide">Hide</span>
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</div>
+
+
+<div class="container">
+  <div class="list">
+    <div class="list-item link-card" data-url="mailto:robbie@rndm.site">
+      <div class="icon">
+        <img src="https://rndmrobbie.github.io/assets/icons/email.png" alt="Email Icon" />
+      </div>
+      <div class="content">
+        <div class="title">Contact Me</div>
+        <div class="subtitle">robbie@rndm.site</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="assets/js/main-script.js" defer></script>
+
 </body>
 </html>

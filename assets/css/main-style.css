@@ -1,0 +1,218 @@
+/* ==== GLOBAL RESET ==== */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: #d08494;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  z-index: 0;
+}
+
+/* ==== DOT GRID BACKGROUND ==== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3; /* now behind everything */
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.04;
+  animation: pulseDots 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseDots {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+/* ==== DATA-LINES SVG ==== */
+.data-lines {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -2; /* between dot grid and containers */
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+}
+.data-lines path {
+  stroke: white;
+  stroke-width: 1;
+  opacity: 0.08;
+  fill: none;
+}
+
+.hero-logo {
+  margin-top: 48px;
+  margin-bottom: 32px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* ==== CONTAINER UI STACK ==== */
+.container {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  width: 400px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  view-transition-name: container;
+  min-height: 80px;
+  z-index: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  view-transition-name: list;
+}
+
+.container.expanded .list {
+  gap: 16px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e4e4e7;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  height: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.link-card:hover {
+  background: #f4f4f4;
+}
+
+/* ==== STACK EFFECT ==== */
+.container .list-item:nth-child(1) {
+  margin-bottom: -21.5%;
+  transform: scale(1);
+  z-index: 2;
+  view-transition-name: list-item-1;
+}
+.container .list-item:nth-child(2) {
+  margin-bottom: -21.5%;
+  transform: scale(0.95);
+  z-index: 1;
+  view-transition-name: list-item-2;
+}
+.container .list-item:nth-child(3) {
+  transform: scale(0.9);
+  z-index: 0;
+  view-transition-name: list-item-3;
+}
+.container.expanded .list-item:nth-child(1),
+.container.expanded .list-item:nth-child(2),
+.container.expanded .list-item:nth-child(3) {
+  margin-bottom: 0;
+  transform: scale(1);
+}
+
+/* ==== ICONS ==== */
+.icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* ==== CONTENT TEXT ==== */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #18181b;
+}
+.subtitle {
+  font-size: 14px;
+  color: #71717a;
+}
+
+/* ==== EXPAND BUTTON ==== */
+.show-hide-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  margin: 8px auto 0 auto;
+  width: 140px;
+  background: none;
+  color: #71717a;
+  border: 1px solid #e4e4e7;
+  border-radius: 24px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  view-transition-name: show-hide-btn;
+}
+.show-hide-btn span {
+  display: inline-block;
+  width: fit-content;
+}
+.show-hide-btn svg {
+  transform: rotate(-180deg);
+  transition: transform 0.3s;
+  view-transition-name: show-hide-btn-icon;
+}
+.container.expanded .show-hide-btn svg {
+  transform: rotate(0deg);
+}
+.show-hide-btn .hide {
+  display: none;
+}
+.container.expanded .show-hide-btn .hide {
+  display: inline-block;
+}
+.container.expanded .show-hide-btn .show {
+  display: none;
+}
+
+/* ==== SINGLE CARD FIX ==== */
+.container:has(.list .list-item:nth-child(1)):not(:has(.list .list-item:nth-child(2))) .list-item {
+  margin-bottom: 0 !important;
+  transform: scale(1) !important;
+  height: auto;
+}
+.container:has(.list .list-item:nth-child(1)):not(:has(.list .list-item:nth-child(2))) {
+  min-height: 96px;
+}
