@@ -11,7 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoTarget = document.getElementById("logo-target");
   const overlay = document.getElementById("boot-overlay");
   const target = document.querySelector(".boot-sequence");
-  const rawText = target.textContent.trim();
+  const rawText = `
+Initializing terminal graphics...
+Loading modules [██████████] 100%
+Mounting /usr/rndm/core...
+System ready_
+`.trim();
   let lineIndex = 0;
 
   function writeLogoLine() {
