@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       console.log("➡️ Redirecting to main.html");
-      window.location.href = "main.html";
+      window.location.href = "core.html";
     }, 400);
   }
 });
