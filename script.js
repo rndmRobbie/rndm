@@ -29,10 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function startBootSequence() {
     const finalText = rawText;
-    const skipMap = new Array(finalText.length).fill(false);
-    const cyrillic = "ДЖЗЙЛПФЦЧШЩЪЫЬЭЮЯБВГЁЖЗИЙК";
-    const katakana = "アイウエオカキクケコサシスセソタチツテトナニヌネノ";
-    const charset = cyrillic + katakana;
+    const charset = "ДЖЗЙЛПФЦЧШЩЪЫЬЭЮЯБВГЁЖЗИЙКアイウエオカキクケコサシスセソタチツテトナニヌネノ";
     let output = Array(finalText.length).fill("");
     let currentIndex = 0;
 
@@ -72,8 +69,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function closeOverlay() {
     setTimeout(() => {
-      overlay.classList.add("boot-hide");
-      setTimeout(() => overlay.remove(), 600);
-    }, 600);
+      flashAndRedirect();
+    }, 800);
+  }
+
+  function flashAndRedirect() {
+    const flash = document.querySelector(".boot-flash");
+    flash.classList.add("active");
+    setTimeout(() => {
+      window.location.href = "main.html";
+    }, 400);
   }
 });
