@@ -1,0 +1,49 @@
+<!-- 
+  Inspired by original work on CodePen:
+  https://codepen.io/filipz/pen/myyLGjR
+
+  Forked and reimagined by Robbie (rndmRobbie)
+  All custom styling, layout logic, and visual enhancements by Robbie.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="static/favicon.ico"/>
+  <title>About Me</title>
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+<link rel="stylesheet" href="assets/css/aboutme-style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="main-container">
+  <header class="header">
+    <div class="header-word-left">ARCHITECTURE</div>
+    <div class="header-word-center">robbie@rndm</div>
+    <div class="header-word-right">DESIGN</div>
+  </header>
+
+  <div class="grid-container">
+    <div class="main-title" id="creativity-text">
+      Apiring VR developer with a background in Architecture, Fashion Photography, and Design.
+    </div>
+    <div class="canvas-container" id="canvas-container">
+      <canvas id="canvas" width="800" height="800"></canvas>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="coordinates">19°26′ N, 99°8′ W/div>
+    <div class="mysterious-message">I SEE THE WORLD IN f/1.4</div>
+  </footer>
+</div>
+<!-- partial -->
+  <script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
