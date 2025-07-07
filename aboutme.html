@@ -6,9 +6,8 @@
   All custom styling, layout logic, and visual enhancements by Robbie.
 -->
 
-
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="static/favicon.ico"/>
@@ -16,38 +15,42 @@
   <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
   <link rel="stylesheet" href="assets/css/aboutme-style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
-<body>
-<!-- partial:index.partial.html -->
-<div class="main-container">
-  <header class="header">
-    <div class="header-word-left">BACK</div>
-    <div class="header-word-center">robbie@rndm</div>
-    <div class="header-word-right">""</div>
-  </header>
 
-  <div class="grid-container">
-    <div class="main-title" id="creativity-text">
-      Apiring VR developer with a background in Design, Fashion Photography, and Architecture. [ EN / ESP / ITA / RUS ]
+<body>
+  <div class="main-container">
+    <header class="header">
+      <div class="header-word-left">
+        <button onclick="window.location.href='core.html'" class="back-button">BACK</button>
+      </div>
+      <div class="header-word-center">robbie@rndm</div>
+      <div class="header-word-right">""</div>
+    </header>
+
+    <div class="grid-container">
+      <div class="main-title" id="creativity-text">
+        Aspiring VR developer with a background in Design, Fashion Photography, and Architecture.
+        <br />
+        [ EN / ESP / ITA / RUS ]
+      </div>
+
+      <div class="canvas-container" id="canvas-container">
+        <canvas id="canvas" width="800" height="800"></canvas>
+      </div>
     </div>
-    <div class="canvas-container" id="canvas-container">
-      <canvas id="canvas" width="800" height="800"></canvas>
-    </div>
+
+    <footer class="footer">
+      <div class="coordinates">19°26′ N, 99°8′ W</div>
+      <div class="mysterious-message">I SEE THE WORLD IN f/1.4</div>
+    </footer>
   </div>
 
-  <footer class="footer">
-    <div class="coordinates">19°26′ N, 99°8′ W</div>
-    <div class="mysterious-message">I SEE THE WORLD IN f/1.4</div>
-  </footer>
-</div>
-<!-- === GSAP Plugins === -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <!-- === GSAP Plugins === -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 
-<!-- === Custom Script === -->
-<script src="assets/js/aboutme-script.js"></script>
+  <!-- === Custom Script === -->
+  <script src="assets/js/aboutme-script.js"></script>
 </body>
 </html>
-
