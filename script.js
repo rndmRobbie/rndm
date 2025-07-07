@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const bootText = bootTextLines.join("\n").replace(/\r?\n/g, "\n").trim();
+  const bootChars = [...bootText]; // Array of characters
 
   const logoTarget = document.getElementById("logo-target");
   const target = document.querySelector(".boot-sequence");
@@ -39,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function startBootSequence() {
     console.log("🚀 Boot sequence starting...");
     const charset = "ДЖЗЙЛПФЦЧШЩЪЫЬЭЮЯБВГЁЖЗИЙКアイウエオカキクケコサシスセソタチツテトナニヌネノ";
-    const output = Array(bootText.length).fill("");
+    const output = Array(bootChars.length).fill("");
     let currentIndex = 0;
 
     function updateDisplay() {
@@ -47,18 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
       target.innerHTML = result + '<span class="cursor">█</span>';
       target.setAttribute("data-content", result + "█");
 
-      if (currentIndex >= bootText.length) {
+      console.log(`🔤 Progress: ${currentIndex}/${bootChars.length}`);
+      if (currentIndex >= bootChars.length) {
         console.log("✅ Boot text complete");
         closeOverlay();
       }
     }
 
     function scrambleChar(pos, realChar) {
-      if (typeof realChar === "undefined") {
-        console.error("🚨 Invalid character at position:", pos);
-        return;
-      }
-
       let cycles = 0;
       const maxCycles = 2 + Math.floor(Math.random() * 2);
       const cycle = setInterval(() => {
@@ -70,16 +67,16 @@ document.addEventListener("DOMContentLoaded", () => {
           output[pos] = realChar;
           updateDisplay();
           currentIndex++;
-          if (currentIndex < bootText.length) {
-            setTimeout(() => scrambleChar(currentIndex, bootText[currentIndex]), 1);
+          if (currentIndex < bootChars.length) {
+            setTimeout(() => scrambleChar(currentIndex, bootChars[currentIndex]), 1);
           }
         }
       }, 15);
     }
 
-    if (bootText.length > 0) {
+    if (bootChars.length > 0) {
       target.textContent = "";
-      scrambleChar(0, bootText[0]);
+      scrambleChar(0, bootChars[0]);
     } else {
       console.error("❌ Boot text is empty");
     }
