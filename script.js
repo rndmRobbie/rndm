@@ -10,15 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
     "╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝     ╚═╝"
   ];
 
-  const bootText = `
-Initializing terminal graphics...
-Loading modules [██████████] 100%
-Mounting /usr/rndm/core...
-System ready_
-`.trim();
+  const bootTextLines = [
+    "Initializing terminal graphics...",
+    "Loading modules [██████████] 100%",
+    "Mounting /usr/rndm/core...",
+    "System ready_"
+  ];
+
+  const bootText = bootTextLines.join("\n"); // clean, no extra newlines
 
   const logoTarget = document.getElementById("logo-target");
-  const overlay = document.getElementById("boot-overlay");
   const target = document.querySelector(".boot-sequence");
   let lineIndex = 0;
 
@@ -36,18 +37,19 @@ System ready_
   writeLogoLine();
 
   function startBootSequence() {
-    console.log("🚀 Starting boot sequence");
+    console.log("🚀 Boot sequence starting...");
     const charset = "ДЖЗЙЛПФЦЧШЩЪЫЬЭЮЯБВГЁЖЗИЙКアイウエオカキクケコサシスセソタチツテトナニヌネノ";
-    let output = Array(bootText.length).fill("");
+    const finalText = bootText;
+    const output = Array(finalText.length).fill("");
     let currentIndex = 0;
 
     function updateDisplay() {
       const result = output.join("");
-      target.innerHTML = result;
-      target.setAttribute("data-content", result);
-      if (currentIndex >= bootText.length) {
-        target.innerHTML += '<span class="cursor">█</span>';
-        target.setAttribute("data-content", result + "█");
+      target.innerHTML = result + '<span class="cursor">█</span>';
+      target.setAttribute("data-content", result + "█");
+
+      if (currentIndex >= finalText.length) {
+        console.log("✅ Boot text complete");
         closeOverlay();
       }
     }
@@ -64,32 +66,23 @@ System ready_
           output[pos] = realChar;
           updateDisplay();
           currentIndex++;
-          if (currentIndex < bootText.length) {
-            setTimeout(() => scrambleChar(currentIndex, bootText[currentIndex]), 1);
+          if (currentIndex < finalText.length) {
+            setTimeout(() => scrambleChar(currentIndex, finalText[currentIndex]), 1);
           }
         }
       }, 15);
     }
 
     target.textContent = "";
-    scrambleChar(0, bootText[0]);
+    scrambleChar(0, finalText[0]);
   }
 
   function closeOverlay() {
-    console.log("✅ Boot sequence complete");
-    setTimeout(() => {
-      flashAndRedirect();
-    }, 800);
-  }
-
-  function flashAndRedirect() {
+    console.log("⚡ Initiating screen flash");
     const flash = document.querySelector(".boot-flash");
-    if (!flash) {
-      console.error("❌ .boot-flash element not found!");
-      return;
+    if (flash) {
+      flash.classList.add("active");
     }
-    console.log("⚡ Triggering flash...");
-    flash.classList.add("active");
     setTimeout(() => {
       console.log("➡️ Redirecting to main.html");
       window.location.href = "main.html";
