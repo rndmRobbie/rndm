@@ -687,7 +687,7 @@ class TextHeatReveal {
 
 const image = new TextHeatReveal(
   document.getElementById("canvas"),
-  "https://cdn.cosmos.so/a8bf7aec-4414-4a8f-991b-d7d2f970a626?format=jpeg",
+  "assets/images/aboutme.jpg",
   {
     gridSize: 12,
     fontSize: 10,
