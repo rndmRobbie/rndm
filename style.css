@@ -194,6 +194,25 @@ body::after {
   50% { opacity: 0; }
 }
 
+.boot-flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10004;
+}
+
+.boot-flash.active {
+  animation: flash-out 0.4s ease-in forwards;
+}
+
+@keyframes flash-out {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 @media (max-width: 460px) {
   .logo-ascii {
     font-size: 0.75rem;
