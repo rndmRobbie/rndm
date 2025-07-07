@@ -63,7 +63,7 @@ body::before {
   border-radius: 12px;
 }
 
-/* ==== CONTAINERS ==== */
+/* ==== CONTAINER ==== */
 .container {
   background: white;
   border-radius: 24px;
@@ -77,6 +77,9 @@ body::before {
 }
 .container.expanded {
   animation: containerBounce 0.35s ease;
+}
+.container.contracting {
+  animation: containerSqueeze 0.35s ease;
 }
 
 /* ==== LIST ==== */
@@ -113,7 +116,7 @@ body::before {
   background: #f4f4f4;
 }
 
-/* ==== STACKING ORDER ==== */
+/* ==== STACK EFFECT ==== */
 .container .list-item:nth-child(1) {
   margin-bottom: -21.5%;
   transform: scale(1);
@@ -138,9 +141,16 @@ body::before {
   transform: scale(1);
 }
 
-/* ==== TOP CARD BOOST (COLLAPSED) ==== */
+/* ==== TOP CARD BOOST ==== */
 .container:not(.expanded) .list-item:nth-child(1) {
   transform: scale(1.04);
+}
+
+/* ==== CONTRACTION EFFECT FOR ITEMS ==== */
+.container.contracting .list-item:nth-child(1),
+.container.contracting .list-item:nth-child(2),
+.container.contracting .list-item:nth-child(3) {
+  animation: compressIn 0.3s ease;
 }
 
 /* ==== ICON ==== */
@@ -227,7 +237,7 @@ body::before {
   min-height: 96px;
 }
 
-/* ==== BOUNCE KEYFRAMES ==== */
+/* ==== ANIMATIONS ==== */
 @keyframes bounceIn {
   0%   { transform: scale(0.95); }
   60%  { transform: scale(1.03); }
@@ -236,5 +246,15 @@ body::before {
 @keyframes containerBounce {
   0%   { transform: scale(0.98); }
   60%  { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+@keyframes containerSqueeze {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+@keyframes compressIn {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(0.94); }
   100% { transform: scale(1); }
 }
