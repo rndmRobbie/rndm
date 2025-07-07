@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Toggle Expand/Collapse Containers
+  // === Expand / Collapse Buttons ===
   document.querySelectorAll(".show-hide-btn").forEach(button => {
     button.addEventListener("click", () => {
       const container = button.closest(".container");
@@ -21,13 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Handle .link-card click behavior
+  // === Make link-cards clickable ===
   document.querySelectorAll(".link-card").forEach(card => {
     card.style.cursor = "pointer";
     card.addEventListener("click", () => {
       const url = card.getAttribute("data-url");
       if (url) {
-        window.open(url, "_blank"); // 👈 change to location.href = url; for same-tab
+        window.open(url, "_blank"); // Use "_self" to open in same tab
       }
     });
   });
