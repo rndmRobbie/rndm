@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const bootText = bootTextLines.join("\n").replace(/\r?\n/g, "\n").trim();
-  const bootChars = [...bootText]; // Array of characters
+  const bootChars = [...bootText];
 
   const logoTarget = document.getElementById("logo-target");
   const target = document.querySelector(".boot-sequence");
@@ -47,15 +47,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = output.join("");
       target.innerHTML = result + '<span class="cursor">█</span>';
       target.setAttribute("data-content", result + "█");
-
       console.log(`🔤 Progress: ${currentIndex}/${bootChars.length}`);
-      if (currentIndex >= bootChars.length) {
-        console.log("✅ Boot text complete");
-        closeOverlay();
-      }
     }
 
     function scrambleChar(pos, realChar) {
+      if (typeof realChar === "undefined") {
+        console.error("🚨 Invalid character at position:", pos);
+        return;
+      }
+
       let cycles = 0;
       const maxCycles = 2 + Math.floor(Math.random() * 2);
       const cycle = setInterval(() => {
@@ -69,6 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
           currentIndex++;
           if (currentIndex < bootChars.length) {
             setTimeout(() => scrambleChar(currentIndex, bootChars[currentIndex]), 1);
+          } else {
+            console.log("✅ Boot text complete [final character resolved]");
+            closeOverlay();
           }
         }
       }, 15);
