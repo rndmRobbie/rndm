@@ -687,7 +687,8 @@ class TextHeatReveal {
 
 const image = new TextHeatReveal(
   document.getElementById("canvas"),
-  "assets/images/aboutme.jpg",
+  "https://raw.githubusercontent.com/rndmRobbie/rndm/main/assets/images/aboutme.jpg",
+
   {
     gridSize: 12,
     fontSize: 10,
