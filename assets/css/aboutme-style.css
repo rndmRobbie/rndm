@@ -191,3 +191,19 @@ canvas {
     margin-bottom: 1rem;
   }
 }
+
+.back-button {
+  background: none;
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #18181b;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.back-button:hover {
+  background-color: #f4f4f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
