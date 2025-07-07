@@ -52,7 +52,8 @@ body::before {
 .hero-logo {
   margin-top: 48px;
   margin-bottom: 32px;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   justify-content: center;
 }
@@ -68,8 +69,9 @@ body::before {
   background: white;
   border-radius: 24px;
   padding: 24px;
-  width: 400px;
-  margin-bottom: 32px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 32px auto;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   view-transition-name: container;
   min-height: 80px;
@@ -87,7 +89,7 @@ body::before {
   gap: 16px;
 }
 
-/* ==== UNIVERSAL CARD STYLE ==== */
+/* ==== CARD STYLE ==== */
 .list-item,
 a.list-item,
 .link-card {
@@ -109,7 +111,7 @@ a.list-item,
   color: inherit;
 }
 
-/* ==== HOVER FEEDBACK ==== */
+/* ==== HOVER EFFECT ==== */
 .list-item:hover,
 a.list-item:hover,
 .link-card:hover {
@@ -227,15 +229,15 @@ a.list-item:hover,
 }
 
 /* ==== SINGLE CARD FIX ==== */
+.container:has(.list .list-item:nth-child(1)):not(:has(.list .list-item:nth-child(2))),
+.container:has(.list .link-card:nth-child(1)):not(:has(.list .link-card:nth-child(2))) {
+  min-height: 96px;
+}
 .container:has(.list .list-item:nth-child(1)):not(:has(.list .list-item:nth-child(2))) .list-item,
 .container:has(.list .link-card:nth-child(1)):not(:has(.list .link-card:nth-child(2))) .link-card {
   margin-bottom: 0 !important;
   transform: scale(1) !important;
   height: auto;
-}
-.container:has(.list .list-item:nth-child(1)):not(:has(.list .list-item:nth-child(2))),
-.container:has(.list .link-card:nth-child(1)):not(:has(.list .link-card:nth-child(2))) {
-  min-height: 96px;
 }
 
 /* ==== ANIMATION ==== */
@@ -263,13 +265,14 @@ a.list-item:hover,
 /* ==== RESPONSIVE TWEAKS FOR MOBILE ==== */
 @media (max-width: 480px) {
   .hero-logo {
-    width: 80%;
+    width: 90%;
     margin-top: 24px;
     margin-bottom: 16px;
   }
 
   .container {
     width: 90%;
+    max-width: 90%;
     padding: 16px;
     border-radius: 16px;
   }
