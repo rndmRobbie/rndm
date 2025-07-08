@@ -22,7 +22,7 @@
 
 body {
   margin: 0;
-  background: #111;
+  background: transparent;
   color: #eee;
   overflow-x: hidden;
   font-family: var(--font-primary);
