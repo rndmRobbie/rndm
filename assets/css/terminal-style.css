@@ -1,17 +1,17 @@
-/* Load IBM Plex Mono */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 
-/* Main terminal container */
 .panel-terminal {
   font-family: 'IBM Plex Mono', monospace;
   background-color: #000;
   color: #00ff88;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 32px auto;
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.15);
 }
 
-/* Top nav bar (the mac-style buttons) */
 .panel-terminal-nav {
   background-color: #1e1e1e;
   padding: 6px 12px;
@@ -32,64 +32,19 @@
   display: inline-block;
 }
 
-.btn.red { background-color: #ff5f56; }
-.btn.yellow { background-color: #ffbd2e; }
-.btn.green { background-color: #27c93f; }
+.panel-terminal-buttons .red { background-color: #ff5f56; }
+.panel-terminal-buttons .yellow { background-color: #ffbd2e; }
+.panel-terminal-buttons .green { background-color: #27c93f; }
 
-/* Body of the terminal */
-.terminal-body {
+.panel-terminal-body {
   padding: 16px;
-  font-size: 12px;
-  white-space: pre;
-}
-
-/* Prompt and output lines */
-.terminal-line {
-  font-size: 12px;
-  line-height: 1.4;
-  margin-bottom: 8px;
   white-space: pre-wrap;
-}
-
-/* Flex container for ASCII + info */
-.terminal-flex {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  gap: 24px;
-}
-
-/* ASCII art block (left) */
-.ascii-art {
-  font-size: 6px;
-  line-height: 1.05;
-  white-space: pre;
-  flex-shrink: 0;
-}
-
-/* System info block (right) */
-.ascii-info {
+  line-height: 1.6;
   font-size: 12px;
-  line-height: 1.4;
-  white-space: pre-wrap;
-  flex-grow: 1;
-}
-
-/* Blinking cursor */
-.cursor {
-  display: inline-block;
-  animation: blink 1s step-start infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
 }
 
 .panel-terminal-body .terminal-line {
-  font-size: 12px;
-  line-height: 1.4;
   margin-bottom: 8px;
-  white-space: pre-wrap;
 }
 
 .panel-terminal-body .terminal-flex {
@@ -97,12 +52,12 @@
   flex-wrap: nowrap;
   align-items: flex-start;
   gap: 24px;
-  margin-bottom: 8px;
+  margin: 8px 0;
 }
 
 .panel-terminal-body .ascii-art {
-  font-size: 6px;
-  line-height: 1.05;
+  font-size: 10px;
+  line-height: 1.2;
   white-space: pre;
   flex-shrink: 0;
 }
@@ -114,3 +69,13 @@
   flex-grow: 1;
 }
 
+.panel-terminal-body .cursor {
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
