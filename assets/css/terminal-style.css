@@ -1,80 +1,42 @@
-.panel-terminal {
-  font-family: 'SF Mono', monospace;
+.panel-terminal-body {
+  padding: 16px;
+  font-family: 'IBM Plex Mono', monospace;
   background-color: #000;
   color: #00ff88;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto 32px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  overflow: hidden;
+  white-space: pre;
 }
 
-.panel-terminal-nav {
-  background-color: #1e1e1e;
-  padding: 6px 12px;
-  display: flex;
-  align-items: center;
-  border-radius: 10px 10px 0 0;
+.terminal-line {
+  font-size: 12px;
+  line-height: 1.4;
+  padding-bottom: 8px;
 }
 
-.panel-terminal-buttons {
-  display: flex;
-  gap: 8px;
-}
-
-.panel-terminal-buttons .btn {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.panel-terminal-buttons .red { background-color: #ff5f56; }
-.panel-terminal-buttons .yellow { background-color: #ffbd2e; }
-.panel-terminal-buttons .green { background-color: #27c93f; }
-
-.panel-terminal-body {
-  padding: 16px;
-  white-space: pre-wrap;
-  line-height: 1.6;
-}
-
-.panel-terminal-body .cursor {
-  display: inline-block;
-  animation: blink 1s step-start infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-.panel-terminal-body {
+.terminal-flex {
   display: flex;
   gap: 24px;
-  padding: 16px;
-  white-space: pre;
-  overflow-x: auto;
-  color: #00ff88;
-  font-family: 'IBM Plex Mono', monospace;
+  align-items: flex-start;
+  flex-wrap: nowrap;
 }
 
 .ascii-art {
   font-size: 6px;
   line-height: 1.05;
-  flex-sh
-
-.ascii-flex {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  flex-wrap: nowrap;
+  flex-shrink: 0;
+  white-space: pre;
 }
 
 .ascii-info {
   font-size: 12px;
   line-height: 1.4;
-  white-space: pre;
+  white-space: pre-wrap;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
