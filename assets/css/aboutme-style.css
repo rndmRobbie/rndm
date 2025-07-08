@@ -43,7 +43,7 @@ body {
   z-index: -1;
   pointer-events: none;
   will-change: transform;
-  opacity: 0.2; /* Tweak as needed */
+  opacity: 0.9; /* Tweak as needed */
   transition: transform 0.1s ease-out;
 }
 
