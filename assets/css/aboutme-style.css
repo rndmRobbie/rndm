@@ -194,19 +194,20 @@ canvas {
 
 .back-button {
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 4px 12px;
+  border: none;
+  color: #f4f4f5;
   font-size: 12px;
   font-weight: 500;
-  color: #f9f9f9;
+  padding: 0;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
 }
 
 .back-button:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #d08494;
 }
+
 
