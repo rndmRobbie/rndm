@@ -84,3 +84,33 @@
 @keyframes blink {
   50% { opacity: 0; }
 }
+
+.panel-terminal-body .terminal-line {
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  white-space: pre-wrap;
+}
+
+.panel-terminal-body .terminal-flex {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+.panel-terminal-body .ascii-art {
+  font-size: 6px;
+  line-height: 1.05;
+  white-space: pre;
+  flex-shrink: 0;
+}
+
+.panel-terminal-body .ascii-info {
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  flex-grow: 1;
+}
+
