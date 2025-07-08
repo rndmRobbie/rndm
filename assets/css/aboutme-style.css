@@ -6,7 +6,6 @@
   --grid-padding: 2rem;
   --grid-gutter: 1rem;
 
-  /* Font variables */
   --font-primary: "PP Neue Montreal", sans-serif;
   --font-mono: "TheGoodMonolith", sans-serif;
   --font-weight-normal: 400;
@@ -23,32 +22,26 @@
 html, body {
   height: 100%;
   overflow-x: hidden;
-  overscroll-behavior: none; /* ⬅️ Prevents rubber-banding on some devices */
+  overscroll-behavior: none;
   margin: 0;
   padding: 0;
 }
 
-
 body {
-  margin: 0;
   background: transparent;
   color: #eee;
-  overflow-x: hidden;
   font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-tight);
+  overflow-x: hidden;
 }
 
 .parallax-bg {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
+  inset: 0;
   background: url('/assets/images/aboutmebg.jpg') center center / cover no-repeat;
   z-index: -1;
   pointer-events: none;
@@ -64,14 +57,13 @@ body {
   pointer-events: none;
 }
 
-
 .main-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   position: relative;
   z-index: 1;
-  padding-bottom: 1px; /* <-- Adds micro-buffer to prevent top gap snap */
+  padding-bottom: 1px;
 }
 
 .grid-container {
@@ -93,26 +85,15 @@ body {
   grid-gap: var(--grid-gutter);
   width: 100%;
   padding: var(--grid-padding);
-  font-weight: var(--font-weight-bold);
   font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-tight);
   align-items: start;
 }
 
-.header-word-left {
-  grid-column: 1 / span 3;
-  text-align: left;
-}
-
-.header-word-center {
-  grid-column: 7 / span 3;
-  text-align: left;
-}
-
-.header-word-right {
-  grid-column: 10 / span 3;
-  text-align: right;
-}
+.header-word-left { grid-column: 1 / span 3; text-align: left; }
+.header-word-center { grid-column: 7 / span 3; text-align: left; }
+.header-word-right { grid-column: 10 / span 3; text-align: right; }
 
 .main-title {
   grid-column: 1 / span 4;
@@ -130,12 +111,11 @@ body {
   aspect-ratio: 4 / 3;
   align-self: flex-end;
   padding-bottom: 4rem;
-  opacity: 0; /* Start with opacity 0 for fade-in effect */
-  transition: opacity 0.8s ease-in-out; /* Add transition for fade-in */
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
 }
-
 .canvas-container.visible {
-  opacity: 1; /* Will be added via JavaScript */
+  opacity: 1;
 }
 
 canvas {
@@ -160,39 +140,41 @@ canvas {
   opacity: 0.7;
   text-transform: uppercase;
   align-items: end;
-  min-height: 4rem; /* Add a fixed height baseline */
+  min-height: 4rem;
 }
 
 .coordinates {
   grid-column: 1 / span 4;
   text-align: left;
 }
-
 .mysterious-message {
   grid-column: 7 / span 6;
   text-align: right;
 }
 
+.back-button {
+  all: unset;
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: #eee;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  transition: color 0.2s ease;
+}
+.back-button:hover {
+  color: #fff;
+}
+
 @media (max-width: 1024px) {
-  .main-title {
-    grid-column: 1 / span 4;
-  }
-
-  .canvas-container {
-    grid-column: 5 / span 8;
-  }
-
-  .header-word-center {
-    grid-column: 5 / span 3;
-  }
-
-  .header-word-right {
-    grid-column: 8 / span 5;
-  }
-
-  .mysterious-message {
-    grid-column: 5 / span 8;
-  }
+  .main-title { grid-column: 1 / span 4; }
+  .canvas-container { grid-column: 5 / span 8; }
+  .header-word-center { grid-column: 5 / span 3; }
+  .header-word-right { grid-column: 8 / span 5; }
+  .mysterious-message { grid-column: 5 / span 8; }
 }
 
 @media (max-width: 768px) {
@@ -225,37 +207,19 @@ canvas {
     grid-column: 1;
     text-align: left;
     margin-bottom: 1rem;
+    display: block;
   }
-}
 
-.back-button {
-  all: unset;
-  font-family: var(--font-primary);
-  font-size: 1.5rem; /* Matches the .header font-size */
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-tight);
-  color: #eee;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35em;
-  transition: color 0.2s ease;
-}
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-.back-button:hover {
-  color: #fff;
-}
-
-@media (max-width: 768px) {
   .parallax-bg {
-    background-attachment: scroll; /* fallback still useful */
-    position: fixed;               /* ⬅️ KEEP it fixed */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    min-height: 100vh;
-    height: auto;                  /* ⬅️ Avoids 100% height weirdness */
+    position: fixed;
+    inset: 0;
+    background-attachment: scroll;
+    height: 100vh;
   }
 }
-
