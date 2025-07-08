@@ -14,15 +14,18 @@
 
 .panel-container .panel-list-item:nth-child(1) {
   margin-bottom: -16%;
+  text-decoration: none
 }
 
 .panel-container .panel-list-item:nth-child(2) {
   margin-bottom: -16%;
   transform: scale(0.95);
+  text-decoration: none
 }
 
 .panel-container .panel-list-item:nth-child(3) {
   transform: scale(0.9);
+  text-decoration: none
 }
 
 .panel-container .panel-hide {
@@ -188,15 +191,18 @@
   .panel-container .panel-list-item:nth-child(1) {
     margin-bottom: -16%;
     transform: scale(1);
+    text-decoration: none
   }
 
   .panel-container .panel-list-item:nth-child(2) {
     margin-bottom: -16%;
     transform: scale(0.95);
+    text-decoration: none
   }
 
   .panel-container .panel-list-item:nth-child(3) {
     transform: scale(0.9);
+    text-decoration: none
   }
 
   .panel-icon {
