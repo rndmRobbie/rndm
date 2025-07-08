@@ -22,7 +22,12 @@
 
 html, body {
   height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none; /* ⬅️ Prevents rubber-banding on some devices */
+  margin: 0;
+  padding: 0;
 }
+
 
 body {
   margin: 0;
@@ -42,7 +47,8 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0; /* This ensures full bleed */
+  bottom: 0;
+  overflow: hidden;
   background: url('/assets/images/aboutmebg.jpg') center center / cover no-repeat;
   z-index: -1;
   pointer-events: none;
