@@ -52,25 +52,25 @@
 }
 
 .panel-terminal-body {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  line-height: 1.3;
-  white-space: pre-wrap;
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  white-space: pre;
+  overflow-x: auto;
   color: #00ff88;
+  font-family: 'IBM Plex Mono', monospace;
 }
+
+.ascii-art {
+  font-size: 6px;
+  line-height: 1.05;
+  flex-sh
 
 .ascii-flex {
   display: flex;
   align-items: flex-start;
   gap: 24px;
   flex-wrap: nowrap;
-}
-
-.ascii-art {
-  font-size: 6px; /* Shrunk to fit full height */
-  line-height: 1.1;
-  white-space: pre;
-  flex-shrink: 0;
 }
 
 .ascii-info {
