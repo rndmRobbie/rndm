@@ -92,7 +92,7 @@ body {
   grid-column: 7 / span 6;
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 2;
   align-self: flex-end;
   padding-bottom: 4rem;
   opacity: 0; /* Start with opacity 0 for fade-in effect */
