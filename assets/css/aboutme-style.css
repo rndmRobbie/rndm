@@ -20,6 +20,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   background: transparent;
@@ -236,8 +240,14 @@ canvas {
 
 @media (max-width: 768px) {
   .parallax-bg {
-    background-attachment: scroll;
-    position: absolute;
-    height: 100%;
+    background-attachment: scroll; /* fallback still useful */
+    position: fixed;               /* ⬅️ KEEP it fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100vh;
+    height: auto;                  /* ⬅️ Avoids 100% height weirdness */
   }
 }
+
