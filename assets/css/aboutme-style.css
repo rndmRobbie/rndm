@@ -129,28 +129,24 @@ canvas {
 }
 
 .footer {
-  display: grid;
-  grid-template-columns: repeat(var(--grid-columns), 1fr);
-  grid-gap: var(--grid-gutter);
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 0.5rem;
   padding: var(--grid-padding);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  opacity: 0.7;
-  text-transform: uppercase;
-  align-items: end;
   min-height: 4rem;
+  position: relative;
+  z-index: 1;
 }
 
-.coordinates {
-  grid-column: 1 / span 4;
+.coordinates,
+.mysterious-message {
+  display: block;
+  width: 100%;
   text-align: left;
 }
-.mysterious-message {
-  grid-column: 7 / span 6;
-  text-align: right;
-}
+
 
 .back-button {
   all: unset;
