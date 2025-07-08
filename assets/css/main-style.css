@@ -338,8 +338,8 @@ html:active-view-transition-type(collapse) {
 
 .grid-item.expanded .icon img {
   filter: none !important;
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
 }
 
 .item:hover .icon img {
