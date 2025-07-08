@@ -61,13 +61,13 @@
 
 .ascii-flex {
   display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
   align-items: flex-start;
+  gap: 24px;
+  flex-wrap: nowrap;
 }
 
 .ascii-art {
-  font-size: 9px;
+  font-size: 6px; /* Shrunk to fit full height */
   line-height: 1.1;
   white-space: pre;
   flex-shrink: 0;
@@ -75,4 +75,6 @@
 
 .ascii-info {
   font-size: 12px;
-  line-height: 1
+  line-height: 1.4;
+  white-space: pre;
+}
