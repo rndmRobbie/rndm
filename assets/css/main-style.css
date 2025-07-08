@@ -359,18 +359,18 @@ html:active-view-transition-type(collapse) {
 
 @media (max-width: 600px) {
   .icon img {
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
   }
 
   .grid-item:not(.expanded) .icon img {
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
   }
 
   .grid-item.expanded .icon img {
-    width: 24px;
-    height: 24px;
+    width: 36px;
+    height: 36px;
   }
 
   .grid-item.expanded .icon {
