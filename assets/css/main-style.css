@@ -362,4 +362,19 @@ html:active-view-transition-type(collapse) {
     width: 16px;
     height: 16px;
   }
+
+  .grid-item:not(.expanded) .icon img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .grid-item.expanded .icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .grid-item.expanded .icon {
+    width: 40px;
+    height: 40px;
+  }
 }
