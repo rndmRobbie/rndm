@@ -195,7 +195,7 @@ canvas {
 .back-button {
   all: unset;
   font-family: var(--font-primary);
-  font-size: 14px; /* Match header text size */
+  font-size: 1.5rem; /* Matches the .header font-size */
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-tight);
   color: #eee;
@@ -209,3 +209,4 @@ canvas {
 .back-button:hover {
   color: #fff;
 }
+
