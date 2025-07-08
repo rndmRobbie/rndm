@@ -1,37 +1,81 @@
-.panel-terminal-body {
-  padding: 16px;
+/* Load IBM Plex Mono */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+/* Main terminal container */
+.panel-terminal {
   font-family: 'IBM Plex Mono', monospace;
   background-color: #000;
   color: #00ff88;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.15);
+}
+
+/* Top nav bar (the mac-style buttons) */
+.panel-terminal-nav {
+  background-color: #1e1e1e;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.panel-terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.panel-terminal-buttons .btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn.red { background-color: #ff5f56; }
+.btn.yellow { background-color: #ffbd2e; }
+.btn.green { background-color: #27c93f; }
+
+/* Body of the terminal */
+.terminal-body {
+  padding: 16px;
+  font-size: 12px;
   white-space: pre;
 }
 
+/* Prompt and output lines */
 .terminal-line {
   font-size: 12px;
   line-height: 1.4;
-  padding-bottom: 8px;
+  margin-bottom: 8px;
+  white-space: pre-wrap;
 }
 
+/* Flex container for ASCII + info */
 .terminal-flex {
   display: flex;
-  gap: 24px;
-  align-items: flex-start;
   flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 24px;
 }
 
+/* ASCII art block (left) */
 .ascii-art {
   font-size: 6px;
   line-height: 1.05;
-  flex-shrink: 0;
   white-space: pre;
+  flex-shrink: 0;
 }
 
+/* System info block (right) */
 .ascii-info {
   font-size: 12px;
   line-height: 1.4;
   white-space: pre-wrap;
+  flex-grow: 1;
 }
 
+/* Blinking cursor */
 .cursor {
   display: inline-block;
   animation: blink 1s step-start infinite;
