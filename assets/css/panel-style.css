@@ -177,7 +177,7 @@
   .panel-list-item {
     flex-direction: row;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
     padding: 18px;
     margin-bottom: -2%;
     transform: scale(0.95);
