@@ -175,7 +175,7 @@
   }
 
   .panel-list {
-    padding-bottom: 24px; /* keeps space above Show All button */
+    padding-bottom: 12px; /* keeps space above Show All button */
   }
 
   .panel-container .panel-list-item:nth-child(1),
