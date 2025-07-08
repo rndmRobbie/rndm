@@ -90,9 +90,9 @@ body {
 
 .canvas-container {
   grid-column: 7 / span 6;
-  width: auto;
-  height: 100%;
-  aspect-ratio: 3 / 2;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
   align-self: flex-end;
   padding-bottom: 4rem;
   opacity: 0; /* Start with opacity 0 for fade-in effect */
