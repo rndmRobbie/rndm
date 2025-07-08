@@ -71,6 +71,7 @@ body {
   min-height: 100vh;
   position: relative;
   z-index: 1;
+  padding-bottom: 1px; /* <-- Adds micro-buffer to prevent top gap snap */
 }
 
 .grid-container {
