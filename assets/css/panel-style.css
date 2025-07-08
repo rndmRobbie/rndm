@@ -178,8 +178,8 @@
     flex-direction: row;
     align-items: flex-start;
     gap: 12px;
-    padding: 14px;
-    margin-bottom: -6%;
+    padding: 16px;
+    margin-bottom: -4%;
     transform: scale(0.95);
   }
 
