@@ -43,7 +43,7 @@ body {
   z-index: -1; /* <- this places it *behind* everything else */
   pointer-events: none;
   will-change: transform;
-  opacity: 0.2; /* Optional: adjust as needed */
+  opacity: 1; /* Optional: adjust as needed */
   transition: transform 0.1s ease-out;
 }
 
@@ -227,3 +227,10 @@ canvas {
   color: #fff;
 }
 
+@media (max-width: 768px) {
+  .parallax-bg {
+    background-attachment: scroll;
+    position: absolute;
+    height: 100%;
+  }
+}
