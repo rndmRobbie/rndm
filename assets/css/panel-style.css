@@ -170,7 +170,7 @@
 @media (max-width: 600px) {
   .panel-container {
     width: 100%;
-    padding: 16px;
+    padding: 20px;
     border-radius: 16px;
   }
 
@@ -229,7 +229,7 @@
     width: 100%;
     font-size: 13px;
     padding: 10px 16px;
-    margin-top: 4px; /* collapsed default */
+    margin-top: 6px; /* collapsed default */
   }
 
   .panel-container.expanded .panel-toggle-btn {
