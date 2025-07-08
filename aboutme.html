@@ -55,17 +55,27 @@
   </div>
 
   <script>
-  function setParallaxHeight() {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  function updateParallax() {
+    const bg = document.querySelector('.parallax-bg');
+    if (!bg) return;
+
+    // Only apply the effect on larger screens
+    if (window.innerWidth > 768) {
+      const offset = window.scrollY * 0.2; // tweak intensity
+      bg.style.transform = `translateY(${offset}px)`;
+    } else {
+      // Reset transform on mobile
+      bg.style.transform = 'translateY(0)';
+    }
   }
 
-  // Initial set
-  setParallaxHeight();
+  window.addEventListener('scroll', updateParallax);
+  window.addEventListener('resize', updateParallax);
 
-  // Update on resize (when address bar shows/hides)
-  window.addEventListener('resize', setParallaxHeight);
+  // Initial run on page load
+  updateParallax();
 </script>
+
 
 
   <!-- === GSAP Plugins === -->
