@@ -369,8 +369,8 @@ html:active-view-transition-type(collapse) {
   }
 
   .grid-item.expanded .icon img {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
   }
 
   .grid-item.expanded .icon {
