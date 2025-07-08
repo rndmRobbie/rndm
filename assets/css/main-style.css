@@ -329,7 +329,21 @@ html:active-view-transition-type(collapse) {
   color: #27272a; /* Customize as needed */
 }
 
+.icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
 .item:hover .icon img {
   filter: brightness(1.1);
   transition: filter 0.3s;
+}
+
+@media (max-width: 600px) {
+  .icon img {
+    width: 36px;
+    height: 36px;
+  }
 }
