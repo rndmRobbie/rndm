@@ -193,21 +193,16 @@ canvas {
 }
 
 .back-button {
-  background: none;
-  border: none;
-  color: #f4f4f5;
+  all: unset; /* Resets native button styles */
+  font-family: var(--font-primary);
   font-size: 12px;
-  font-weight: 500;
-  padding: 0;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: #eee;
   cursor: pointer;
-  font-family: inherit;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   transition: color 0.2s ease;
 }
 
 .back-button:hover {
-  color: #d08494;
+  color: #fff;
 }
-
-
