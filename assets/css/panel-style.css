@@ -175,7 +175,7 @@
   }
 
   .panel-list {
-    padding-bottom: 8px; /* collapsed default */
+    padding-bottom: 6px; /* collapsed default */
   }
 
   .panel-container.expanded .panel-list {
