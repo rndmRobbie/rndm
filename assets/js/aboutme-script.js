@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Register plugins
+  window.addEventListener("scroll", () => {
+  const offset = window.pageYOffset * 0.2; // Parallax intensity
+  document.querySelector(".parallax-bg").style.transform = `translateY(${offset}px)`;
+});
+
   gsap.registerPlugin(ScrambleTextPlugin, SplitText);
 
   const creativityText = document.getElementById("creativity-text");
