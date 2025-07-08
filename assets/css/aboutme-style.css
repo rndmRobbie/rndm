@@ -90,8 +90,8 @@ body {
 
 .canvas-container {
   grid-column: 7 / span 6;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   aspect-ratio: 3 / 2;
   align-self: flex-end;
   padding-bottom: 4rem;
