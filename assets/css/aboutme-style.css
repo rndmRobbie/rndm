@@ -37,23 +37,23 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: calc(var(--vh, 1vh) * 100);
-  background: #111 url('/assets/images/aboutmebg.jpg') center center / cover no-repeat;
-  z-index: -1; /* <- this places it *behind* everything else */
+  right: 0;
+  bottom: 0; /* This ensures full bleed */
+  background: url('/assets/images/aboutmebg.jpg') center center / cover no-repeat;
+  z-index: -1;
   pointer-events: none;
   will-change: transform;
-  opacity: 1; /* Optional: adjust as needed */
-  transition: transform 0.1s ease-out;
+  opacity: 1;
 }
 
 .parallax-bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(17, 17, 17, 0.4); /* soft dark overlay */
+  background: rgba(17, 17, 17, 0.4);
   pointer-events: none;
 }
+
 
 .main-container {
   display: flex;
