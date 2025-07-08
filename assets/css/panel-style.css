@@ -6,8 +6,6 @@
   width: 500px;
   margin: 0 auto 32px auto;
   box-shadow:
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.1) 0px 2px 4px -2px;
   view-transition-name: panel-container;
@@ -71,8 +69,6 @@
   border: 1px solid #e4e4e7;
   cursor: pointer;
   box-shadow:
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.1) 0px 2px 4px -2px;
 }
@@ -132,8 +128,8 @@
 }
 
 .panel-date a {
-  color: inherit;
-  text-decoration: underline;
+  color: #71717a;
+  text-decoration: none;
 }
 
 .panel-toggle-btn {
@@ -171,53 +167,6 @@
   view-transition-name: button-label;
 }
 
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  10% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-::view-transition-group(*) {
-  animation-duration: 0.6s;
-  animation-timing-function: linear(
-    0,
-    0.402 7.4%,
-    0.711 15.3%,
-    0.929 23.7%,
-    1.008 28.2%,
-    1.067 33%,
-    1.099 36.9%,
-    1.12 41%,
-    1.13 45.4%,
-    1.13 50.1%,
-    1.111 58.5%,
-    1.019 83.2%,
-    1.004 91.3%,
-    1
-  );
-}
-
-::view-transition-old(*),
-::view-transition-new(*) {
-  height: 100%;
-}
-
-::view-transition-old(button-label),
-::view-transition-new(button-label) {
-  width: fit-content;
-}
-
-::view-transition-old(button-label) {
-  animation-name: fade-out;
-  animation-duration: 0.6s;
-}
-
 @media (max-width: 600px) {
   .panel-container {
     width: 100%;
@@ -226,12 +175,12 @@
   }
 
   .panel-list-item {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    gap: 10px;
-    padding: 10px;
-    margin-bottom: -10%; /* reduce overlap spacing */
-    transform: scale(0.96); /* optional: to subtly compress visual size */
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: -10%;
+    transform: scale(0.95);
   }
 
   .panel-icon {
@@ -248,9 +197,18 @@
     font-size: 14.5px;
   }
 
-  .panel-subtitle,
+  .panel-subtitle {
+    font-size: 12.5px;
+  }
+
+  .panel-date {
+    font-size: 12.5px;
+    padding-top: 4px;
+  }
+
   .panel-date a {
     font-size: 12.5px;
+    text-decoration: none;
   }
 
   .panel-toggle-btn {
@@ -259,4 +217,3 @@
     padding: 10px 16px;
   }
 }
-
