@@ -1,12 +1,57 @@
 .panel-container {
+  font-family: system-ui, -apple-system, sans-serif;
   background: white;
   border-radius: 24px;
   padding: 24px;
-  width: 100%;
-  max-width: 500px;
+  width: 400px;
   margin: 0 auto 32px auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow:
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px -2px;
   view-transition-name: panel-container;
+  box-sizing: border-box;
+}
+
+.panel-container .panel-list-item:nth-child(1) {
+  margin-bottom: -21.5%;
+}
+
+.panel-container .panel-list-item:nth-child(2) {
+  margin-bottom: -21.5%;
+  transform: scale(0.95);
+}
+
+.panel-container .panel-list-item:nth-child(3) {
+  transform: scale(0.9);
+}
+
+.panel-container .panel-hide {
+  display: none;
+}
+
+.panel-container.expanded .panel-list-item:nth-child(1),
+.panel-container.expanded .panel-list-item:nth-child(2) {
+  margin-bottom: 0;
+  transform: scale(1);
+}
+
+.panel-container.expanded .panel-list-item:nth-child(3) {
+  transform: scale(1);
+}
+
+.panel-container.expanded .panel-show {
+  display: none;
+}
+
+.panel-container.expanded .panel-hide {
+  display: block;
+}
+
+.panel-container.expanded .panel-toggle-btn svg {
+  transform: rotate(180deg);
+  transition: transform 0.6s;
 }
 
 .panel-list {
@@ -16,7 +61,7 @@
   view-transition-name: panel-list;
 }
 
-.panel-item {
+.panel-list-item {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -25,7 +70,26 @@
   border-radius: 16px;
   border: 1px solid #e4e4e7;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  box-shadow:
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px -2px;
+}
+
+.panel-list-item:nth-child(1) {
+  view-transition-name: list-item-1;
+  z-index: 2;
+}
+
+.panel-list-item:nth-child(2) {
+  view-transition-name: list-item-2;
+  z-index: 1;
+}
+
+.panel-list-item:nth-child(3) {
+  view-transition-name: list-item-3;
+  z-index: 0;
 }
 
 .panel-icon {
@@ -61,9 +125,14 @@
   color: #71717a;
 }
 
-.panel-date a {
+.panel-date {
   font-size: 14px;
-  color: #444;
+  color: #71717a;
+  text-align: right;
+}
+
+.panel-date a {
+  color: inherit;
   text-decoration: underline;
 }
 
@@ -73,8 +142,8 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 24px;
-  margin: 12px auto 0;
-  width: fit-content;
+  margin: 8px auto 0 auto;
+  width: 140px;
   background: none;
   color: #71717a;
   border: 1px solid #e4e4e7;
@@ -82,40 +151,81 @@
   font-weight: 500;
   font-size: 14px;
   cursor: pointer;
+  view-transition-name: show-hide-btn;
+}
+
+.panel-toggle-btn span {
+  display: inline-block;
+  text-align: center;
+  width: fit-content;
 }
 
 .panel-toggle-btn svg {
   transition: transform 0.3s;
+  view-transition-name: show-hide-btn-icon;
 }
 
-.panel-show {
-  display: inline;
-}
-
+.panel-show,
 .panel-hide {
-  display: none;
+  width: fit-content;
+  view-transition-name: button-label;
 }
 
-.panel-container.expanded .panel-show {
-  display: none;
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
-.panel-container.expanded .panel-hide {
-  display: inline;
+::view-transition-group(*) {
+  animation-duration: 0.6s;
+  animation-timing-function: linear(
+    0,
+    0.402 7.4%,
+    0.711 15.3%,
+    0.929 23.7%,
+    1.008 28.2%,
+    1.067 33%,
+    1.099 36.9%,
+    1.12 41%,
+    1.13 45.4%,
+    1.13 50.1%,
+    1.111 58.5%,
+    1.019 83.2%,
+    1.004 91.3%,
+    1
+  );
 }
 
-.panel-container.expanded .panel-toggle-btn svg {
-  transform: rotate(180deg);
+::view-transition-old(*),
+::view-transition-new(*) {
+  height: 100%;
+}
+
+::view-transition-old(button-label),
+::view-transition-new(button-label) {
+  width: fit-content;
+}
+
+::view-transition-old(button-label) {
+  animation-name: fade-out;
+  animation-duration: 0.6s;
 }
 
 @media (max-width: 600px) {
   .panel-container {
+    width: 100%;
     padding: 16px;
-    max-width: 100%;
     border-radius: 16px;
   }
 
-  .panel-item {
+  .panel-list-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
