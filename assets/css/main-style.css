@@ -330,8 +330,8 @@ html:active-view-transition-type(collapse) {
 }
 
 .icon img {
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
   display: block;
 }
@@ -343,7 +343,7 @@ html:active-view-transition-type(collapse) {
 
 @media (max-width: 600px) {
   .icon img {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
   }
 }
