@@ -229,7 +229,7 @@
     width: 100%;
     font-size: 13px;
     padding: 10px 16px;
-    margin-top: 2px; /* collapsed default */
+    margin-top: 4px; /* collapsed default */
   }
 
   .panel-container.expanded .panel-toggle-btn {
