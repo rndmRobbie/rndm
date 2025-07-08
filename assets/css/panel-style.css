@@ -174,14 +174,6 @@
     border-radius: 16px;
   }
 
-  .panel-list {
-    padding-bottom: 6px; /* collapsed default */
-  }
-
-  .panel-container.expanded .panel-list {
-    padding-bottom: 12px; /* more room when expanded */
-  }
-
   .panel-container .panel-list-item:nth-child(1),
   .panel-container .panel-list-item:nth-child(2),
   .panel-container .panel-list-item:nth-child(3) {
@@ -237,6 +229,10 @@
     width: 100%;
     font-size: 13px;
     padding: 10px 16px;
+    margin-top: 6px; /* collapsed default */
+  }
+
+  .panel-container.expanded .panel-toggle-btn {
+    margin-top: 12px; /* more room when expanded */
   }
 }
-
