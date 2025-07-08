@@ -193,13 +193,16 @@ canvas {
 }
 
 .back-button {
-  all: unset; /* Resets native button styles */
+  all: unset;
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: 14px; /* Match header text size */
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-tight);
   color: #eee;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
   transition: color 0.2s ease;
 }
 
