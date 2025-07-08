@@ -160,6 +160,7 @@ canvas {
   opacity: 0.7;
   text-transform: uppercase;
   align-items: end;
+  min-height: 4rem; /* Add a fixed height baseline */
 }
 
 .coordinates {
