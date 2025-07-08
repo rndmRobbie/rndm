@@ -175,7 +175,11 @@
   }
 
   .panel-list {
-    padding-bottom: 12px; /* keeps space above Show All button */
+    padding-bottom: 8px; /* collapsed default */
+  }
+
+  .panel-container.expanded .panel-list {
+    padding-bottom: 12px; /* more room when expanded */
   }
 
   .panel-container .panel-list-item:nth-child(1),
@@ -235,5 +239,4 @@
     padding: 10px 16px;
   }
 }
-
 
