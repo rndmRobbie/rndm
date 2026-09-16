@@ -1,36 +1,49 @@
 const grid = document.querySelector('.grid');
 
-grid.addEventListener('click', async (e) => {
+async function withViewTransition(update, types) {
+  if (typeof document.startViewTransition === 'function') {
+    try {
+      const transition = document.startViewTransition({ update, types });
+      await transition.finished;
+      return;
+    } catch {
+      /* Safari's older View Transition API takes a callback only */
+      try {
+        const transition = document.startViewTransition(update);
+        await transition.finished;
+        return;
+      } catch {
+        update();
+        return;
+      }
+    }
+  }
+  update();
+}
+
+grid?.addEventListener('click', async (e) => {
   const path = e.composedPath();
   const item = path.find(el => el.classList?.contains('grid-item'));
+  if (!item) return;
+
   const closeIcon = path.find(el => el.classList?.contains('close-icon'));
+  const innerLink = e.target.closest?.('a.item');
 
   if (closeIcon) {
     item.classList.add('active');
-
-    const transition = document.startViewTransition({
-      update: () => {
-        item.classList.remove('expanded');
-      },
-      types: ['collapse']
-    });
-
-    await transition.finished;
+    await withViewTransition(() => {
+      item.classList.remove('expanded');
+    }, ['collapse']);
     item.classList.remove('active');
+    return;
   }
-  else {
-    if(!item.classList.contains('expanded')) {
-      item.classList.add('active');
 
-      const transition = await document.startViewTransition({
-        update: () => {
-          item.classList.add('expanded');
-        },
-        types: ['expand']
-      });
-
-      await transition.finished;
-      item.classList.remove('active');
-    }
+  if (!item.classList.contains('expanded')) {
+    if (innerLink) e.preventDefault();
+    item.classList.add('active');
+    await withViewTransition(() => {
+      item.classList.add('expanded');
+    }, ['expand']);
+    item.classList.remove('active');
   }
 });
