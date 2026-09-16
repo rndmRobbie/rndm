@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+(function () {
   const overlay = document.getElementById("boot-overlay");
   const logoTarget = document.getElementById("logo-target");
   const bootTarget = document.getElementById("boot-sequence");
@@ -11,15 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.documentElement.classList.add("boot-play");
 
   const CHARSET = "ДЖЗЙЛПФЦЧШЩЪЫЬЭЮЯБВГЁЖЗИЙКアイウエオカキクケコサシスセソタチツテトナニヌネノ";
-
-  const logoLines = [
-    "██████╗ ███╗   ██╗██████╗ ███╗   ███╗",
-    "██╔══██╗████╗  ██║██╔══██╗████╗ ████║",
-    "██████╔╝██╔██╗ ██║██║  ██║██╔████╔██║",
-    "██╔═╗██╗██║╚██╗██║██║  ██║██║╚██╔╝██║",
-    "██║ ╚██║██║ ╚████║██████╔╝██║ ╚═╝ ██║",
-    "╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝     ╚═╝"
-  ];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let skipped = false;
   const pendingWaits = new Set();
@@ -58,12 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.classList.remove("boot-play");
       document.documentElement.classList.add("boot-skip");
       overlay.remove();
-    }, 580);
+    }, reduceMotion ? 0 : 580);
   }
 
   function tryBootSound() {
     const audio = document.getElementById("boot-audio");
-    if (!audio) return;
+    if (!audio || reduceMotion) return;
     audio.volume = 0.4;
     audio.play().catch(() => {});
   }
@@ -88,13 +80,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function decodeLine(previous, nextLine) {
     const prefix = previous ? `${previous}\n` : "";
-    for (let i = 0; i < 6; i++) {
+    const frames = reduceMotion ? 1 : 8;
+    for (let i = 0; i < frames; i++) {
       if (skipped) return;
-      renderBoot(prefix + scrambleFrame(nextLine));
-      await wait(28);
+      renderBoot(prefix + (i === frames - 1 ? nextLine : scrambleFrame(nextLine)));
+      await wait(reduceMotion ? 0 : 36);
     }
-    if (skipped) return;
-    renderBoot(prefix + nextLine);
   }
 
   async function fillProgress(previous) {
@@ -103,28 +94,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (skipped) return;
       const bar = "█".repeat(i) + "░".repeat(10 - i);
       renderBoot(`${prefix}${bar}] ${String(i * 10).padStart(3, " ")}%`);
-      await wait(48);
+      await wait(reduceMotion ? 0 : 90);
     }
-  }
-
-  async function writeLogo() {
-    for (const line of logoLines) {
-      if (skipped) return;
-      logoTarget.textContent += `${line}\n`;
-      await wait(70);
-    }
-    logoTarget.classList.add("active-glow");
   }
 
   async function runBootSequence() {
     overlay.setAttribute("aria-busy", "true");
     tryBootSound();
-    await writeLogo();
+    logoTarget.classList.add("active-glow");
+    await wait(reduceMotion ? 200 : 700);
     if (skipped) return;
 
     await decodeLine("", "Initializing terminal graphics...");
     if (skipped) return;
-    await wait(90);
+    await wait(reduceMotion ? 0 : 160);
 
     const afterInit = "Initializing terminal graphics...";
     await fillProgress(afterInit);
@@ -133,14 +116,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const afterLoad = `${afterInit}\nLoading modules [██████████] 100%`;
     await decodeLine(afterLoad, "Mounting /usr/rndm/core...");
     if (skipped) return;
-    await wait(80);
+    await wait(reduceMotion ? 0 : 160);
 
     const afterMount = `${afterLoad}\nMounting /usr/rndm/core...`;
     await decodeLine(afterMount, "System ready");
     if (skipped) return;
 
     renderBoot(`${afterMount}\nSystem ready`);
-    await wait(420);
+    await wait(reduceMotion ? 1600 : 1400);
     if (skipped) return;
 
     finish();
@@ -158,4 +141,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   runBootSequence();
-});
+})();

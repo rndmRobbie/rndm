@@ -8,7 +8,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" class="boot-play">
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="static/favicon.ico"/>
@@ -21,15 +21,36 @@
   <link rel="stylesheet" href="assets/css/terminal-style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="me" href="https://mastodon.social/@archirobbie">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=4">
+  <style>
+    html.boot-skip #boot-overlay { display: none !important; }
+    #boot-overlay {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      inset: 0;
+      z-index: 2147483647;
+      padding: 20px;
+      box-sizing: border-box;
+      background: #d08494;
+    }
+    .boot-box {
+      width: 100%;
+      max-width: 500px;
+      min-height: 320px;
+      background: #0e0e0e;
+      border: 2px solid #f4c57a;
+      color: #f3d2b0;
+    }
+  </style>
   <script>
     (function () {
       var q = new URLSearchParams(location.search);
-      var skip = !q.has("boot") && (
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-        q.has("skip")
-      );
-      document.documentElement.classList.add(skip ? "boot-skip" : "boot-play");
+      if (q.has("skip") && !q.has("boot")) {
+        document.documentElement.classList.remove("boot-play");
+        document.documentElement.classList.add("boot-skip");
+      }
     })();
   </script>
 </head>
@@ -39,9 +60,14 @@
       <div class="boot-scanlines"></div>
       <div class="boot-container">
         <div class="logo-block">
-          <pre class="logo-ascii" id="logo-target"></pre>
+          <pre class="logo-ascii" id="logo-target">██████╗ ███╗   ██╗██████╗ ███╗   ███╗
+██╔══██╗████╗  ██║██╔══██╗████╗ ████║
+██████╔╝██╔██╗ ██║██║  ██║██╔████╔██║
+██╔═╗██╗██║╚██╗██║██║  ██║██║╚██╔╝██║
+██║ ╚██║██║ ╚████║██████╔╝██║ ╚═╝ ██║
+╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝     ╚═╝</pre>
         </div>
-        <pre class="boot-sequence" id="boot-sequence"></pre>
+        <pre class="boot-sequence" id="boot-sequence">Initializing terminal graphics...</pre>
         <button type="button" class="skip-hint" id="skip-boot">tap or press esc to skip</button>
       </div>
     </div>
@@ -618,6 +644,6 @@
   <script src="assets/js/main-script.js" defer></script>
   <script src="assets/js/panel-script.js" defer></script>
   <script src="assets/js/taco-handler.js" defer></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
