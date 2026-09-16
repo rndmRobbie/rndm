@@ -27,23 +27,23 @@
       var q = new URLSearchParams(location.search);
       var skip = !q.has("boot") && (
         window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-        q.has("skip") ||
-        (function () { try { return sessionStorage.getItem("rndm-boot-v2") === "1"; } catch (e) { return false; } })()
+        q.has("skip")
       );
       document.documentElement.classList.add(skip ? "boot-skip" : "boot-play");
     })();
   </script>
 </head>
 <body>
-  <div id="boot-overlay" aria-label="Terminal power on">
-    <div class="boot-bg"></div>
-    <div class="boot-scanlines"></div>
-    <div class="boot-vignette"></div>
-    <div class="boot-powerline"></div>
-    <div class="boot-copy">
-      <div class="boot-kicker">RNDM ARCHITECTS  ·  TERMINAL 7</div>
-      <pre class="boot-log" id="boot-log"></pre>
-      <button type="button" class="boot-skip" id="skip-boot">skip</button>
+  <div id="boot-overlay" role="dialog" aria-label="System boot" aria-busy="true">
+    <div class="boot-box">
+      <div class="boot-scanlines"></div>
+      <div class="boot-container">
+        <div class="logo-block">
+          <pre class="logo-ascii" id="logo-target"></pre>
+        </div>
+        <pre class="boot-sequence" id="boot-sequence"></pre>
+        <button type="button" class="skip-hint" id="skip-boot">tap or press esc to skip</button>
+      </div>
     </div>
   </div>
   <audio id="boot-audio" src="static/bootup.ogg" preload="auto"></audio>
@@ -230,6 +230,21 @@
       </div>
     </a>
 
+    <a class="item" href="https://www.youtube.com/@RobbieArchitect" target="_blank" rel="noopener noreferrer" style="view-transition-name: item-youtube-social;">
+      <div class="icon" style="view-transition-name: icon-youtube-social;">
+        <img src="assets/icons/youtube.png" alt="" />
+      </div>
+      <div class="item-content">
+        <div class="item-title">YouTube</div>
+        <div class="item-price">The Channel</div>
+      </div>
+      <div class="chevron" style="view-transition-name: chevron-youtube-social;">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </a>
+
 
   </div>
 
@@ -240,7 +255,7 @@
         <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </div>
-    <div class="count" style="view-transition-name: count-socials;">5 links</div>
+    <div class="count" style="view-transition-name: count-socials;">6 links</div>
   </div>
 
   <div class="chevron" style="view-transition-name: chevron-toggle-socials;">
@@ -479,7 +494,7 @@
       </div>
       <div class="item-content">
         <div class="item-title">CherryTape</div>
-        <div class="item-price">Cassette Recorder</div>
+        <div class="item-price">Retro Audio Recorder</div>
       </div>
       <div class="chevron" style="view-transition-name: chevron-cherrytape;">
         <svg width="24" height="24" viewBox="0 0 24 24">
