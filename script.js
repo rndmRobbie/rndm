@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("🟢 DOM loaded");
+  const BOOT_SEEN_KEY = "rndm-boot-seen";
+  const CHARSET = "ДЖЗЙЛПФЦЧШЩЪЫЬЭЮЯБВГЁЖЗИЙКアイウエオカキクケコサシスセソタチツテトナニヌネノ";
 
   const logoLines = [
     "██████╗ ███╗   ██╗██████╗ ███╗   ███╗",
@@ -10,93 +11,188 @@ document.addEventListener("DOMContentLoaded", () => {
     "╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝     ╚═╝"
   ];
 
-  const bootTextLines = [
-    "Initializing terminal graphics...",
-    "Loading modules [██████████] 100%",
-    "Mounting /usr/rndm/core...",
-    "System ready_"
-  ];
-
-  const bootText = bootTextLines.join("\n").replace(/\r?\n/g, "\n").trim();
-  const bootChars = [...bootText];
-
   const logoTarget = document.getElementById("logo-target");
-  const target = document.querySelector(".boot-sequence");
-  let lineIndex = 0;
+  const bootTarget = document.getElementById("boot-sequence");
+  const overlay = document.getElementById("boot-overlay");
+  const skipButton = document.getElementById("skip-boot");
 
-  function writeLogoLine() {
-    if (lineIndex < logoLines.length) {
-      logoTarget.textContent += logoLines[lineIndex] + "\n";
-      lineIndex++;
-      setTimeout(writeLogoLine, 100);
-    } else {
-      logoTarget.classList.add("active-glow");
-      startBootSequence();
+  let skipped = false;
+  const pendingWaits = new Set();
+
+  function prefersReducedMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function shouldSkipBoot() {
+    const params = new URLSearchParams(location.search);
+    if (params.has("boot")) {
+      try {
+        sessionStorage.removeItem(BOOT_SEEN_KEY);
+      } catch {
+        /* ignore */
+      }
+      return false;
+    }
+    try {
+      if (sessionStorage.getItem(BOOT_SEEN_KEY) === "1") return true;
+    } catch {
+      /* private mode */
+    }
+    return prefersReducedMotion() || params.has("skip");
+  }
+
+  function markBootSeen() {
+    try {
+      sessionStorage.setItem(BOOT_SEEN_KEY, "1");
+    } catch {
+      /* ignore */
     }
   }
 
-  writeLogoLine();
+  function goToCore() {
+    markBootSeen();
+    window.location.replace("core.html");
+  }
 
-  function startBootSequence() {
-    console.log("🚀 Boot sequence starting...");
-    const charset = "ДЖЗЙЛПФЦЧШЩЪЫЬЭЮЯБВГЁЖЗИЙКアイウエオカキクケコサシスセソタチツテトナニヌネノ";
-    const output = Array(bootChars.length).fill("");
-    let currentIndex = 0;
-
-    function updateDisplay() {
-      const result = output.join("");
-      target.innerHTML = result + '<span class="cursor">█</span>';
-      target.setAttribute("data-content", result + "█");
-      console.log(`🔤 Progress: ${currentIndex}/${bootChars.length}`);
-    }
-
-    function scrambleChar(pos, realChar) {
-      if (typeof realChar === "undefined") {
-        console.error("🚨 Invalid character at position:", pos);
+  function wait(ms) {
+    return new Promise((resolve) => {
+      if (skipped) {
+        resolve();
         return;
       }
+      const id = setTimeout(() => {
+        pendingWaits.delete(entry);
+        resolve();
+      }, ms);
+      const entry = () => {
+        clearTimeout(id);
+        pendingWaits.delete(entry);
+        resolve();
+      };
+      pendingWaits.add(entry);
+    });
+  }
 
-      let cycles = 0;
-      const maxCycles = 2 + Math.floor(Math.random() * 2);
-      const cycle = setInterval(() => {
-        output[pos] = charset[Math.floor(Math.random() * charset.length)];
-        updateDisplay();
-        cycles++;
-        if (cycles >= maxCycles) {
-          clearInterval(cycle);
-          output[pos] = realChar;
-          updateDisplay();
-          currentIndex++;
-          if (currentIndex < bootChars.length) {
-            setTimeout(() => scrambleChar(currentIndex, bootChars[currentIndex]), 1);
-          } else {
-            console.log("✅ Boot text complete [final character resolved]");
-            closeOverlay();
-          }
-        }
-      }, 15);
+  function skipBoot() {
+    if (skipped) return;
+    skipped = true;
+    pendingWaits.forEach((cancel) => cancel());
+    pendingWaits.clear();
+    goToCore();
+  }
+
+  function tryBootSound() {
+    const audio = document.getElementById("boot-audio");
+    if (!audio || prefersReducedMotion()) return;
+    audio.volume = 0.4;
+    audio.play().catch(() => {});
+  }
+
+  function renderBoot(text) {
+    bootTarget.textContent = text;
+    const cursor = document.createElement("span");
+    cursor.className = "cursor";
+    cursor.textContent = "█";
+    bootTarget.appendChild(cursor);
+    bootTarget.setAttribute("data-content", text);
+  }
+
+  function scrambleFrame(text) {
+    return [...text]
+      .map((ch) => {
+        if (/[\s\[\]%./:_-]/.test(ch) || ch === "█" || ch === "░") return ch;
+        return CHARSET[Math.floor(Math.random() * CHARSET.length)];
+      })
+      .join("");
+  }
+
+  async function decodeLine(previous, nextLine) {
+    const prefix = previous ? `${previous}\n` : "";
+    for (let i = 0; i < 6; i++) {
+      if (skipped) return;
+      renderBoot(prefix + scrambleFrame(nextLine));
+      await wait(28);
     }
+    if (skipped) return;
+    renderBoot(prefix + nextLine);
+  }
 
-    if (bootChars.length > 0) {
-      target.textContent = "";
-      scrambleChar(0, bootChars[0]);
-    } else {
-      console.error("❌ Boot text is empty");
+  async function fillProgress(previous) {
+    const prefix = previous ? `${previous}\nLoading modules [` : "Loading modules [";
+    for (let i = 0; i <= 10; i++) {
+      if (skipped) return;
+      const bar = "█".repeat(i) + "░".repeat(10 - i);
+      renderBoot(`${prefix}${bar}] ${String(i * 10).padStart(3, " ")}%`);
+      await wait(48);
     }
   }
 
-  function closeOverlay() {
-    console.log("⚡ Initiating screen flash");
-    const flash = document.querySelector(".boot-flash");
-    if (flash) {
-      flash.classList.add("active");
-    } else {
-      console.error("❌ Flash element not found");
+  async function writeLogo() {
+    for (const line of logoLines) {
+      if (skipped) return;
+      logoTarget.textContent += `${line}\n`;
+      await wait(70);
     }
-
-    setTimeout(() => {
-      console.log("➡️ Redirecting to main.html");
-      window.location.href = "core.html";
-    }, 400);
+    logoTarget.classList.add("active-glow");
   }
+
+  async function runBootSequence() {
+    overlay?.setAttribute("aria-busy", "true");
+    tryBootSound();
+    await writeLogo();
+    if (skipped) return;
+
+    await decodeLine("", "Initializing terminal graphics...");
+    if (skipped) return;
+    await wait(90);
+
+    const afterInit = "Initializing terminal graphics...";
+    await fillProgress(afterInit);
+    if (skipped) return;
+
+    const afterLoad = `${afterInit}\nLoading modules [██████████] 100%`;
+    await decodeLine(afterLoad, "Mounting /usr/rndm/core...");
+    if (skipped) return;
+    await wait(80);
+
+    const afterMount = `${afterLoad}\nMounting /usr/rndm/core...`;
+    await decodeLine(afterMount, "System ready");
+    if (skipped) return;
+
+    renderBoot(`${afterMount}\nSystem ready`);
+    await wait(420);
+    if (skipped) return;
+
+    overlay?.classList.add("boot-hide");
+    overlay?.setAttribute("aria-busy", "false");
+    await wait(560);
+    if (skipped) return;
+    goToCore();
+  }
+
+  skipButton?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    skipBoot();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" || event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      skipBoot();
+    }
+  });
+  let clickSkipArmed = false;
+  setTimeout(() => {
+    clickSkipArmed = true;
+  }, 400);
+  document.addEventListener("click", () => {
+    if (!clickSkipArmed) return;
+    skipBoot();
+  });
+
+  if (shouldSkipBoot()) {
+    goToCore();
+    return;
+  }
+
+  runBootSequence();
 });

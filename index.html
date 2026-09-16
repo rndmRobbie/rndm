@@ -1,33 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/x-icon" href="static/favicon.ico"/>
-  <title>RNDM</title>
-  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Robbie / RNDM Architects — links, streams, projects, and a terminal that still thinks it's 1988.">
+  <meta name="theme-color" content="#121212">
+  <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+  <link rel="me" href="https://mastodon.social/@archirobbie">
+  <title>RNDM</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
-  <a rel="me" href="https://mastodon.social/@archirobbie">Mastodon</a>
-
 </head>
 <body>
   <div class="crt-warp"></div>
-  <div id="boot-overlay">
+  <div id="boot-overlay" role="dialog" aria-label="System boot" aria-busy="true">
     <div class="boot-container">
       <div class="logo-block">
         <pre class="logo-ascii" id="logo-target"></pre>
       </div>
-      <pre class="boot-sequence">
-Initializing terminal graphics...
-Loading modules [██████████] 100%
-Mounting /usr/rndm/core...
-System ready_
-      </pre>
+      <pre class="boot-sequence" id="boot-sequence"></pre>
+      <button type="button" class="skip-hint" id="skip-boot">click or press esc to skip</button>
     </div>
   </div>
-  <div class="boot-flash"></div>
-  <script  src="script.js"></script>
-  
+  <audio id="boot-audio" src="static/bootup.ogg" preload="auto"></audio>
+  <script src="script.js"></script>
 </body>
 </html>
